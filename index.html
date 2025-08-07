@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>NF | Network Futsal</title>
+  <style>
+    :root {
+      --color-principal: #181c2f;
+      --color-secundario: #252b43;
+      --color-acento: #4af3ff;
+      --color-texto: #e6e6e6;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, var(--color-principal), #0f111e);
+      color: var(--color-texto);
+      animation: fadeIn 1s ease-in;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 10px 10px;
+      background-color: var(--color-secundario);
+      border-bottom: 3px solid var(--color-acento);
+    }
+
+    header img {
+      height: 80px;
+      vertical-align: middle;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00f0ff55;
+    }
+
+    header h1 {
+      margin: 10px 0 5px;
+      font-size: 2em;
+      color: var(--color-acento);
+    }
+
+    header p {
+      font-size: 0.9em;
+      opacity: 0.8;
+    }
+
+    table {
+      width: 95%;
+      max-width: 1000px;
+      margin: 30px auto;
+      border-collapse: collapse;
+      background-color: var(--color-secundario);
+      box-shadow: 0 0 10px #00000066;
+      border-radius: 10px;
+      overflow: hidden;
+      animation: slideUp 1s ease-out;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+      border-bottom: 1px solid #ffffff1a;
+    }
+
+    th {
+      background-color: var(--color-principal);
+      color: var(--color-acento);
+    }
+
+    td img {
+      height: 28px;
+      vertical-align: middle;
+      margin-right: 6px;
+      border-radius: 5px;
+    }
+
+    tr:hover {
+      background-color: #2f3759;
+      transition: background 0.3s;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.8em;
+      padding: 15px;
+      color: #999;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="NF_DESIGNS_2.png" alt="Logo Liga" />
+    <h1>Network Futsal</h1>
+    <p>Temporada 1 | <a href="#" style="color:#4af3ff;text-decoration:none;"></a> · <a href="#" style="color:#4af3ff;text-decoration:none;"></a></p>
+  </header>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Equipo</th>
+        <th>Tag</th>
+        <th>PJ</th>
+        <th>G</th>
+        <th>E</th>
+        <th>P</th>
+        <th>Pts</th>
+      </tr>
+    </thead>
+    <tbody id="tablaEquipos"></tbody>
+  </table>
+
+  <footer>
+   Futsal Network
+  </footer>
+
+  <script>
+    const equipos = [
+      { nombre: "Fútbol Club Barcelona", tag: "#FCB", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb6eQHcK-XnqLTOJnR2In7CyOxtDzPPrw5lA&s", puntos: 0, pj: 0, g: 0, e: 0, p: 0 },
+      { nombre: "Juventus Football Club", tag: "#JUV", logo: "https://play-lh.googleusercontent.com/wwzO0-9muz3ewwMQOKMbigTe84w0LosX4kq-j7uZrBedSfyL8KZmto41hTGrrvC3jGU=w526-h296-rw", puntos: 0, pj: 0, g: 0, e: 0, p: 0 },
+      { nombre: "Amsterdamsche Football Club Ajax", tag: "#AJX", logo: "https://a.espncdn.com/i/teamlogos/soccer/500/139.png", puntos: 0, pj: 0, g: 0, e: 0, p: 0 },
+      { nombre: "Junior De Barranquilla", tag: "#JUN", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/ESCUDO_JUNIOR.svg/1200px-ESCUDO_JUNIOR.svg.png", puntos: 0, pj: 0, g: 0, e: 0, p: 0 },
+      { nombre: "Asociación Deportivo Pasto", tag: "#PAS", logo: "https://upload.wikimedia.org/wikipedia/commons/6/6b/Deportivo_Pasto_logo.png", puntos: 0, pj: 0, g: 0, e: 0, p: 0 },
+      { nombre: "Qarabağ Futbol Klubu", tag: "#QA", logo: "https://upload.wikimedia.org/wikipedia/en/d/d3/Qaraba%C4%9F_FK_logo.png", puntos: 0, pj: 0, g: 0, e: 0, p: 0 },
+      { nombre: "Deportivo Alavés", tag: "#ALA", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f8/Deportivo_Alaves_logo_%282020%29.svg/1200px-Deportivo_Alaves_logo_%282020%29.svg.png", puntos: 0, pj: 0, g: 0, e: 0, p: 0 },
+      { nombre: "Orense Sporting Club", tag: "#ORE", logo: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/20695.png", puntos: 0, pj: 0, g: 0, e: 0, p: 0 },
+      { nombre: "Girona Futbol Club", tag: "#GIR", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/f/f7/Girona_FC_Logo.svg/1200px-Girona_FC_Logo.svg.png", puntos: 0, pj: 0, g: 0, e: 0, p: 0 },
+      { nombre: "Chelsea Football Club", tag: "#CHE", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/Chelsea_FC.svg/800px-Chelsea_FC.svg.png", puntos: 0, pj: 0, g: 0, e: 0, p: 0 },
+      { nombre: "Santos Futebol Clube", tag: "#SFC", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Santos_Logo.png/250px-Santos_Logo.png", puntos: 0, pj: 0, g: 0, e: 0, p: 0 },
+      { nombre: "Ballspielverein Borussia 09 e.V. Dortmund", tag: "#BVB", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Borussia_Dortmund_logo.svg/1200px-Borussia_Dortmund_logo.svg.png", puntos: 0, pj: 0, g: 0, e: 0, p: 0 },
+      { nombre: "Real Madrid Club de Fútbol", tag: "#RMA", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/1200px-Real_Madrid_CF.svg.png", puntos: 0, pj: 0, g: 0, e: 0, p: 0 },
+      { nombre: "Botafogo de Futebol e Regatas", tag: "#BOT", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Botafogo_de_Futebol_e_Regatas_logo.svg/250px-Botafogo_de_Futebol_e_Regatas_logo.svg.png", puntos: 0, pj: 0, g: 0, e: 0, p: 0 },
+      { nombre: "Liverpool Football Club", tag: "#LIV", logo: "https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Liverpool_FC.svg/800px-Liverpool_FC.svg.png", puntos: 0, pj: 0, g: 0, e: 0, p: 0 }
+    ];
+
+    const tabla = document.getElementById("tablaEquipos");
+    equipos.forEach((eq, i) => {
+      const fila = document.createElement("tr");
+      fila.innerHTML = `
+        <td>${i + 1}</td>
+        <td><img src="${eq.logo}" alt="${eq.nombre}"> ${eq.nombre}</td>
+        <td>${eq.tag}</td>
+        <td>${eq.pj}</td>
+        <td>${eq.g}</td>
+        <td>${eq.e}</td>
+        <td>${eq.p}</td>
+        <td>${eq.puntos}</td>
+      `;
+      tabla.appendChild(fila);
+    });
+  </script>
+
+</body>
+</html>
